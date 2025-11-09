@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE LOVE PROTOCOL - Dedicated to Olivia</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Anime.js for smooth, complex animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     
     <script>
@@ -122,15 +123,15 @@
                 </p>
 
                 <h1 class="text-4xl sm:text-6xl font-sans font-bold leading-tight text-white max-w-4xl tracking-tighter" id="main-title">
-                    LET US RECALIBRATE OUR LOVE CONNECTION. POWERED BY TRUST.
+                    LET US RECALIBRATE OUR LOVE CONNECTION. POWERED BY TRUST.</span>
                 </h1>
 
                 <p class="text-base sm:text-lg text-love-subtitle max-w-2xl pt-4">
                     My Dearest, I know we've faced misunderstandings it's happened many times. Every action you've perceived as hurtful or wrong was not driven by malice. It was driven by my own frustration and fear of losing you. Let's fix the broken protocol and build a connection that lasts.
                 </p>
 
-                <a href="#story" class="inline-flex items-center space-x-2 bg-love-accent text-love-dark px-8 py-3 text-lg font-bold tracking-wider rounded-lg shadow-neon-md hover:shadow-neon-sm transition duration-300 mt-6" id="story-button">
-                    <span>MORE</span>
+                <a href="#story-content" class="inline-flex items-center space-x-2 bg-love-accent text-love-dark px-8 py-3 text-lg font-bold tracking-wider rounded-lg shadow-neon-md hover:shadow-neon-sm transition duration-300 mt-6" id="story-button">
+                    <span>READ MORE</span>
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
                 </a>
             </div>
@@ -186,7 +187,7 @@
 
         <hr class="border-t border-gray-800 my-20">
 
-        <section class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8" id="memories">
+        <section class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8" id="memories-section">
             <div class="space-y-6">
                 <h2 class="text-3xl sm:text-5xl font-sans font-extrabold text-white tracking-tighter">
                     OUR LOVE JOURNEY <span class="text-love-accent neon-glow">ALWAYS GROWING</span>
@@ -194,8 +195,8 @@
                 <p class="text-base sm:text-lg text-love-subtitle max-w-xl">
                     Our history isn't defined by the breakups; it's defined by the love that made us try again every single time. Every moment, good and confusing, has created this beautiful connection.
                 </p>
-                <a href="#" class="inline-flex items-center space-x-2 border border-love-accent/50 text-love-accent px-6 py-3 text-sm font-bold tracking-wider rounded-lg hover:bg-love-accent/10 transition duration-300 shadow-neon-sm mt-6" id="memories-button">
-                    <span>EVEN MORE</span>
+                <a href="#memories-content" class="inline-flex items-center space-x-2 border border-love-accent/50 text-love-accent px-6 py-3 text-sm font-bold tracking-wider rounded-lg hover:bg-love-accent/10 transition duration-300 shadow-neon-sm mt-6" id="memories-button">
+                    <span>MEMORIES</span>
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-1-4h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
@@ -248,18 +249,91 @@
 
     </main>
 
+    <!-- Modal Overlay for Story and Memories -->
+    <div id="protocol-modal" class="fixed inset-0 bg-love-dark/90 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-love-dark/95 border border-love-accent/70 w-full max-w-4xl h-auto max-h-[90vh] overflow-y-auto rounded-xl shadow-neon-md relative p-8">
+            
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-love-accent hover:text-white transition duration-200">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <!-- Modal Content Header -->
+            <h2 id="modal-title" class="text-3xl font-sans font-extrabold text-love-accent neon-glow mb-6"></h2>
+
+            <!-- Modal Content Body -->
+            <div id="modal-content" class="text-love-text space-y-4 font-sans text-lg">
+                <!-- Content will be injected here -->
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-gray-700 text-center text-sm text-love-subtitle">
+                Recalibration Status: Acknowledged.
+            </div>
+        </div>
+    </div>
+
     <footer class="text-center text-xs text-love-subtitle py-4 border-t border-gray-900 mt-12">
         <p>RECALIBRATION INITIATED by phil. &copy; FOREVER. I LOVE YOU, OLIVIA.</p>
     </footer>
 
     <script>
-        // Use anime.js for a beautiful header text animation
+        // --- Modal Content Definitions ---
+        const storyContent = `
+            <p><strong>Initialization Sequence: The True Error Log</strong></p>
+            <p>Olivia, our repeated arguments are not flaws in our love, but symptoms of a larger miscommunication virus. Every time we've 'broken up' all times it wasn't because I wanted to leave. It was because I felt unheard, and my defense mechanism is to withdraw or react out of <strong>frustration</strong>.</p>
+            
+            <p>When I act coldly, or say things I regret, that is 100% the frustration module taking over. I'm frustrated with myself for not being able to explain how much I value you, how mad your choice of word make me feel and that frustration leaks out as anger or detachment.</p>
+
+            <p>I want to rewrite this protocol. My commitment is to stop reacting from a place of fear and frustration, and instead, operate from our core value: Trust and Honesty. My priority is not being "right," but restoring peace and happiness for you. I promise to listen better, speak clearer, and never let frustration define my actions towards the person I love most.</p>
+            
+            <p class="text-right text-love-accent font-bold mt-8"> End of Log. Commitment: Permanent. Ifetu timakukondani😣</p>
+        `;
+
+        const memoriesContent = `
+            <p class="text-center mb-6"><strong>Memory Archive Access Granted. Displaying Key Moments...</strong></p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div class="text-center">
+                    <img src="https://placehold.co/400x250/F472B6/0f0f1c?text=Our+First+Date" class="rounded-lg w-full mb-3 border-2 border-love-accent/50" alt="Our First Date Memory" onerror="this.onerror=null; this.src='https://placehold.co/400x250/F472B6/0f0f1c?text=First+Date+Memory';">
+                    <p class="text-sm text-love-subtitle">DATA LOG 001: The coffee, the nervous laughter, and the realization that I was done for. The start of everything.</p>
+                </div>
+                
+                <div class="text-center">
+                    <img src="https://placehold.co/400x250/B8B8E8/0f0f1c?text=Our+Favorite+Memory" class="rounded-lg w-full mb-3 border-2 border-love-accent/50" alt="Our Favorite Memory" onerror="this.onerror=null; this.src='https://placehold.co/400x250/B8B8E8/0f0f1c?text=Best+Day+Ever';">
+                    <p class="text-sm text-love-subtitle">DATA LOG 007: That rainy day trip where we couldn't stop laughing. Proof that even chaos is better with you.</p>
+                </div>
+
+                <div class="sm:col-span-2 text-center pt-4">
+                    <img src="https://placehold.co/800x200/F472B6/0f0f1c?text=Every+Time+We+Made+Up" class="rounded-lg w-full mb-3 border-2 border-love-accent/50" alt="Every Time We Made Up" onerror="this.onerror=null; this.src='https://placehold.co/800x200/F472B6/0f0f1c?text=Making+Up+Moment';">
+                    <p class="text-sm text-love-subtitle">RECALIBRATION LOG: The moment after every argument when we realize it's always worth fighting for each other. That's the real win.</p>
+                </div>
+            </div>
+        `;
+
+        // --- Modal Control Functions ---
+        function openModal(title, content) {
+            document.getElementById('modal-title').innerHTML = title;
+            document.getElementById('modal-content').innerHTML = content;
+            document.getElementById('protocol-modal').classList.remove('hidden');
+            document.getElementById('protocol-modal').classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            document.getElementById('protocol-modal').classList.add('hidden');
+            document.getElementById('protocol-modal').classList.remove('flex');
+            document.getElementById('modal-title').innerHTML = '';
+            document.getElementById('modal-content').innerHTML = '';
+            document.body.style.overflow = ''; // Restore background scrolling
+        }
+
+
+        // --- Animation Functions ---
         function animateHeader() {
             const textEl = document.getElementById('logo-text');
             const originalText = textEl.textContent;
-            textEl.textContent = ''; // Clear text
+            textEl.textContent = ''; 
             
-            // Re-wrap letters for individual animation
             originalText.split('').forEach(letter => {
                 const span = document.createElement('span');
                 span.textContent = letter;
@@ -283,7 +357,6 @@
                 });
         }
 
-        // Simple pulse animation on the main button
         function animateButtonPulse(buttonId) {
             anime({
                 targets: `#${buttonId}`,
@@ -296,19 +369,16 @@
             });
         }
         
-        // Typewriter effect on the main title
         function animateTitle(id, fullText) {
             const titleElement = document.getElementById(id);
             if (!titleElement) return;
 
-            // Prepare text for typewriter effect by breaking into individual elements
             titleElement.innerHTML = fullText.replace(/<br>/g, '#BR#').split('').map(char => {
                 if (char === ' ') return ' ';
                 if (char === '#') return '';
                 return `<span class="opacity-0">${char}</span>`;
             }).join('');
             
-            // Add the bold/glow span back in, ensuring it doesn't get wrapped
             titleElement.innerHTML = titleElement.innerHTML.replace(/B R # /g, '<br>').replace('TRUST.', '<span class="text-love-accent neon-glow">TRUST.</span>');
 
 
@@ -317,7 +387,7 @@
                 opacity: 1,
                 easing: "easeInOutQuad",
                 duration: 50,
-                delay: (el, i) => 20 * i // Delay each character's appearance
+                delay: (el, i) => 20 * i 
             });
         }
 
@@ -326,11 +396,30 @@
             animateButtonPulse('story-button');
             animateButtonPulse('memories-button');
 
-            // Store the full title text before the script modifies it
+            // Initialize Title Animation
             const mainTitleText = document.getElementById('main-title').innerHTML;
-            document.getElementById('main-title').innerHTML = ''; // Clear for effect
+            document.getElementById('main-title').innerHTML = ''; 
             animateTitle('main-title', mainTitleText);
+
+            // Add event listeners for the new modal functions
+            document.getElementById('story-button').addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal("PROTOCOL: OUR REAL STORY", storyContent);
+            });
+
+            document.getElementById('memories-button').addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal("MEMORY ARCHIVE: OUR BEST MOMENTS", memoriesContent);
+            });
+            
+            // Allow closing modal by clicking outside it
+            document.getElementById('protocol-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'protocol-modal') {
+                    closeModal();
+                }
+            });
         });
     </script>
 </body>
 </html>
+
